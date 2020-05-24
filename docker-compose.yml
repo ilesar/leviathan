@@ -1,0 +1,59 @@
+version: '3.7'
+
+services:
+    mysql:
+        image: mysql
+        command: [
+            '--character-set-server=utf8mb4',
+            '--collation-server=utf8mb4_unicode_ci',
+            '--default-authentication-plugin=mysql_native_password'
+            ]
+        ports:
+            - 3306:3306
+        volumes:
+            - ./mysql:/var/lib/mysql
+        networks:
+            - smart-home
+        environment:
+            MYSQL_DATABASE: smart_home
+            MYSQL_ROOT_PASSWORD: root
+        
+        
+    php:
+        build:
+            context: .
+            dockerfile: Dockerfile-php
+        volumes:
+            - ./smart-home/:/var/www/smart-home/
+        networks:
+            - smart-home
+        environment:
+            APP_ENV: dev
+            DATABASE_URL: mysql://root:root@mysql:3306/smart_home?serverVersion=5.7
+            JWT_PASSPHRASE: localhost
+            JWT_TTL: 9993600
+            MQTT_SERVER_HOST: 127.0.0.1
+            MQTT_SERVER_PORT: 1883
+            MQTT_CLIENT_ID: smarthome-core
+        depends_on:
+            - mysql
+
+
+    nginx:
+        build:
+            context: .
+            dockerfile: Dockerfile-nginx
+        volumes:
+            - ./smart-home/:/var/www/smart-home/
+        ports:
+            - 8001:80
+        networks:
+            - smart-home
+        depends_on: 
+            - php
+
+
+
+
+networks:
+    smart-home:
