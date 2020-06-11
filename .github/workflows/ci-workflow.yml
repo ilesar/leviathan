@@ -10,7 +10,7 @@ jobs:
     runs-on: self-hosted
     steps:
       - name: Fix permissions
-        run: echo ${{secrets.DEPLOY_PASSWORD}} | sudo chown -R $USER:$USER ~/Runners/_work
+        run: echo ${{secrets.DEPLOY_PASSWORD}} | sudo chown -R $USER:$USER ~/Runners/leviathan/_work
       - name: Git checkout
         uses: actions/checkout@v2.1.1
       - name: Build the stack
