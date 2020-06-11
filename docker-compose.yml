@@ -1,7 +1,8 @@
 version: '3.7'
 
 services:
-    mysql:
+    db:
+        container_name: db
         image: mysql
         command: [
             '--character-set-server=utf8mb4',
@@ -15,16 +16,19 @@ services:
         networks:
             - smart-home
         environment:
-            MYSQL_DATABASE: smart_home
+            MYSQL_DATABASE: symfony
             MYSQL_ROOT_PASSWORD: root
-        
-        
+            MYSQL_USER: symfony
+            MYSQL_PASSWORD: symfony
     php:
+        container_name: php-fpm
         build:
             context: .
-            dockerfile: Dockerfile-php
+            dockerfile: php/Dockerfile-php
+        ports:
+            - "9001"
         volumes:
-            - ./smart-home/:/var/www/smart-home/
+            - ./smart-home/:/var/www/smart-home/:cached
         networks:
             - smart-home
         environment:
@@ -36,20 +40,18 @@ services:
             MQTT_SERVER_PORT: 1883
             MQTT_CLIENT_ID: smarthome-core
         depends_on:
-            - mysql
-
-
+            - db
     nginx:
         build:
             context: .
-            dockerfile: Dockerfile-nginx
+            dockerfile: nginx/Dockerfile-nginx
         volumes:
-            - ./smart-home/:/var/www/smart-home/
+            - ./smart-home/:/var/www/smart-home:cached
         ports:
             - 8001:80
         networks:
             - smart-home
-        depends_on: 
+        depends_on:
             - php
 
 
