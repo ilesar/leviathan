@@ -14,9 +14,9 @@ jobs:
       - name: Checkout Leviathan
         uses: actions/checkout@v2.1.1
       - name: ssh-agent
-          uses: webfactory/ssh-agent@v0.3.0
-          with:
-            ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+        uses: webfactory/ssh-agent@v0.3.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
       - name: Checkout SmartHome project
         uses: actions/checkout@v2.1.1
         with:
