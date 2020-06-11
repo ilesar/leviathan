@@ -17,7 +17,10 @@ jobs:
         uses: actions/checkout@v2.1.1
         with:
           repository: ilesar/smart-home
-          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+      - name: ssh-agent
+        uses: webfactory/ssh-agent@v0.3.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
       - name: Build the stack
         run: docker-compose -f docker-compose.yml up -d
       - name: Running containers...
