@@ -21,8 +21,8 @@ jobs:
           repository: ilesar/smart-home
           token: ${{ secrets.ACCESS_TOKEN }}
       - name: Build the stack
-        run: docker-compose -f ./../../docker-compose.yml up -d
+        run: docker-compose up -d
       - name: Running containers...
-        run: docker-compose -f ./../../docker-compose.yml ps
+        run: docker-compose ps
 
 
