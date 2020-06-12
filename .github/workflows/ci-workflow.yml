@@ -21,6 +21,12 @@ jobs:
           repository: ilesar/smart-home
           token: ${{ secrets.ACCESS_TOKEN }}
           path: ./smart-home
+      - name: Checkout SmartHomeFrontend project
+          uses: actions/checkout@v2.1.1
+          with:
+            repository: ilesar/smart-home-frontend
+            token: ${{ secrets.ACCESS_TOKEN }}
+            path: ./smart-home-frontend
       - name: Current directory
         run: pwd
       - name: Build the stack
