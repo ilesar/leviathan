@@ -15,14 +15,12 @@ jobs:
         run: git config --global --add url."git@github.com:".insteadOf "https://github.com/"
       - name: Checkout Leviathan
         uses: actions/checkout@v2.1.1
-        with:
-          path: leviathan
       - name: Checkout SmartHome project
         uses: actions/checkout@v2.1.1
         with:
           repository: ilesar/smart-home
           token: ${{ secrets.ACCESS_TOKEN }}
-          path: leviathan/smart-home
+          path: ./smart-home
       - name: Current directory
         run: pwd
       - name: Build the stack
