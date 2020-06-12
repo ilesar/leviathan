@@ -17,5 +17,4 @@ RUN curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/lo
 COPY smart-home/ /var/www/smart-home
 WORKDIR /var/www/smart-home/
 CMD composer install --ignore-platform-reqs;
-CMD composer install --ignore-platform-reqs;
 CMD composer jwt:create

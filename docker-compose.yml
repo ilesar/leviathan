@@ -62,6 +62,7 @@ services:
             - ./smart-home/:/var/www/smart-home
         ports:
             - 8001:80
+            - 8002:8080
         networks:
             - smart-home
         depends_on:
