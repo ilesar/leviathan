@@ -33,7 +33,7 @@ services:
             - smart-home
         environment:
             APP_ENV: dev
-            DATABASE_URL: mysql://symfony:symfony@localhost :3306/smart_home?serverVersion=5.7
+            DATABASE_URL: mysql://symfony:symfony@localhost:3306/smart_home?serverVersion=5.7
             JWT_PASSPHRASE: localhost
             JWT_TTL: 9993600
             MQTT_SERVER_HOST: 127.0.0.1
