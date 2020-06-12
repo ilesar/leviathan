@@ -28,7 +28,7 @@ services:
         ports:
             - "9001"
         volumes:
-            - ./smart-home/:/var/www/smart-home/:cached
+            - ./smart-home/:/var/www/smart-home
         networks:
             - smart-home
         environment:
@@ -46,7 +46,7 @@ services:
             context: .
             dockerfile: nginx/Dockerfile-nginx
         volumes:
-            - ./smart-home/:/var/www/smart-home:cached
+            - ./smart-home/:/var/www/smart-home
         ports:
             - 8001:80
         networks:
