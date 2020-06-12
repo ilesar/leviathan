@@ -11,6 +11,8 @@ jobs:
     steps:
       - name: Fix permissions
         run: echo ${{secrets.DEPLOY_PASSWORD}} | sudo chown -R $USER:$USER ~/Runners/leviathan/_work
+      - name: Git 2FA
+        run: git config --global --add url."git@github.com:".insteadOf "https://github.com/"
       - name: Checkout Leviathan
         uses: actions/checkout@v2.1.1
       - name: Checkout SmartHome project
