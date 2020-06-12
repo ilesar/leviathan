@@ -41,19 +41,6 @@ services:
             MQTT_CLIENT_ID: smarthome-core
         depends_on:
             - db
-    nginx:
-        build:
-            context: .
-            dockerfile: nginx/Dockerfile-nginx
-        volumes:
-            - ./smart-home/:/var/www/smart-home
-        ports:
-            - 8001:80
-            - 8002:8080
-        networks:
-            - smart-home
-        depends_on:
-            - vue
     vue:
         container_name: vue
         build:
@@ -67,6 +54,20 @@ services:
             VUE_APP_BASE_URL: http://localhost:8002/api
         depends_on:
             - php
+    nginx:
+        build:
+            context: .
+            dockerfile: nginx/Dockerfile-nginx
+        volumes:
+            - ./smart-home/:/var/www/smart-home
+            - ./smart-home-frontend/:/var/www/smart-home-frontend
+        ports:
+            - 8001:80
+            - 8002:8080
+        networks:
+            - smart-home
+        depends_on:
+            - vue
 
 
 networks:
