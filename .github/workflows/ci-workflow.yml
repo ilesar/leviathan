@@ -20,6 +20,8 @@ jobs:
         with:
           repository: ilesar/smart-home
           token: ${{ secrets.ACCESS_TOKEN }}
+      - name: Current directory
+        run: pwd
       - name: Build the stack
         run: docker-compose up -d
       - name: Running containers...
