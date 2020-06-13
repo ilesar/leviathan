@@ -21,7 +21,7 @@ services:
             MYSQL_USER: symfony
             MYSQL_PASSWORD: symfony
     php:
-        container_name: php-fpm
+        container_name: php
         build:
             context: .
             dockerfile: php/Dockerfile-php
