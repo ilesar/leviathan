@@ -67,7 +67,7 @@ services:
         networks:
             - smart-home
         depends_on:
-            - php
+            - vue
 
 
 networks:
