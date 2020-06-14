@@ -13,6 +13,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 		mysqli \
         pdo pdo_mysql
 
+CMD pwd
 RUN curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer
 COPY smart-home/ /var/www/smart-home
 WORKDIR /var/www/smart-home/
