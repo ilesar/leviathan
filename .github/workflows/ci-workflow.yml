@@ -30,7 +30,7 @@ jobs:
       - name: Current directory
         run: pwd
       - name: Build the stack
-        run: docker-compose up -d
+        run: docker-compose up -d --build
       - name: Running containers...
         run: docker-compose ps
 
