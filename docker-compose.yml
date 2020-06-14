@@ -45,6 +45,9 @@ services:
         build:
             context: .
             dockerfile: nginx/Dockerfile-nginx
+        volumes:
+            - ./smart-home/:/var/www/smart-home
+            - ./smart-home-frontend/:/var/www/smart-home-frontend
         ports:
             - 8001:80
             - 8002:8080
