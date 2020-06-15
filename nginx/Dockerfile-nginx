@@ -5,10 +5,7 @@ WORKDIR /var/www/smart-home
 RUN npm install
 RUN npm run build
 
-FROM nginx:latest as production-stage
-
-RUN mkdir /app
-COPY --from=build-stage /smart-home-frontend/dist /var/www/smart-home-frontend
+FROM nginx:latest
 
 COPY nginx/nginx.conf /etc/nginx/
 COPY nginx/default.conf /etc/nginx/conf.d/
