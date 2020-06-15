@@ -1,7 +1,7 @@
 FROM node:latest
 
-COPY smart-home-frontend/ /var/www/smart-home
-WORKDIR /var/www/smart-home
+COPY smart-home-frontend/ /var/www/smart-home-frontend
+WORKDIR /var/www/smart-home-frontend
 RUN npm install
 RUN npm run build
 
