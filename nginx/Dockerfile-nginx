@@ -1,15 +1,15 @@
 FROM node:latest as build-stage
 
 WORKDIR smart-home-frontend/
-COPY package*.json ./
+COPY package*.json /var/www/smart-home-frontend
 RUN npm install
-COPY ./ .
+COPY ./ /var/www/smart-home-frontend
 RUN npm run build
 
 FROM nginx:latest as production-stage
 
 RUN mkdir /app
-COPY --from=build-stage /smart-home-frontend/dist /app
+COPY --from=build-stage /smart-home-frontend/dist /var/www/smart-home-frontend
 
 COPY nginx/nginx.conf /etc/nginx/
 COPY nginx/default.conf /etc/nginx/conf.d/
