@@ -11,6 +11,8 @@ jobs:
     steps:
       - name: Git 2FA
         run: git config --global --add url."git@github.com:".insteadOf "https://github.com/"
+      - name: cleanup #https://github.com/actions/checkout/issues/211
+        run: sudo chown -R $USER:$USER $GITHUB_WORKSPACE
       - name: Checkout Leviathan
         uses: actions/checkout@v2.2.0
       - name: Checkout SmartHome project
