@@ -14,7 +14,7 @@ RUN npm run build
 
 FROM nginx:latest as production-stage
 
-COPY --from=build-stage /var/www/smart-home-frontend/dist /var/www/smart-home-frontend/dist
+COPY --from=build-stage /var/www/smart-home-frontend /var/www/smart-home-frontend
 COPY nginx/nginx.conf /etc/nginx/
 COPY nginx/default.conf /etc/nginx/conf.d/
 COPY nginx/vue.conf /etc/nginx/conf.d/
