@@ -1,7 +1,10 @@
 FROM node:latest as build-stage
 
-COPY smart-home-frontend/ /var/www/smart-home-frontend
 WORKDIR /var/www/smart-home-frontend
+
+ENV PATH /var/www/smart-home-frontend/.bin:$PATH
+
+COPY ./smart-home-frontend/package.json /var/www/smart-home-frontend/package.json
 RUN npm install
 RUN npm run build
 
