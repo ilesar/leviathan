@@ -8,7 +8,7 @@ services:
             '--character-set-server=utf8mb4',
             '--collation-server=utf8mb4_unicode_ci',
             '--default-authentication-plugin=mysql_native_password'
-            ]
+        ]
         ports:
             - 3306:3306
         volumes:
@@ -33,7 +33,7 @@ services:
             - smart-home
         environment:
             APP_ENV: dev
-            DATABASE_URL: mysql://symfony:symfony@localhost:3306/smart_home?serverVersion=5.7
+            DATABASE_URL: mysql://symfony:symfony@db:3306/smart_home?serverVersion=5.7
             JWT_PASSPHRASE: localhost
             JWT_TTL: 9993600
             MQTT_SERVER_HOST: 127.0.0.1
