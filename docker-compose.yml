@@ -53,7 +53,7 @@ services:
         networks:
             - smart-home
         environment:
-            BASE_URL: http://core.smarthome.lan:8001/api
+            VUE_APP_BASE_URL: http://core.smarthome.lan:8001/api
         depends_on:
             - php
 
