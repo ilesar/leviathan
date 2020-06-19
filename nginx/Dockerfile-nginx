@@ -4,8 +4,7 @@ FROM node:latest as build-stage
 
 WORKDIR /var/www/smart-home-frontend
 
-COPY smart-home-frontend/package.json /var/www/smart-home-frontend
-COPY smart-home-frontend/package-lock.json /var/www/smart-home-frontend
+COPY smart-home-frontend/package*.json /var/www/smart-home-frontend
 
 RUN npm install
 
