@@ -39,7 +39,6 @@ services:
             MQTT_SERVER_HOST: 127.0.0.1
             MQTT_SERVER_PORT: 1883
             MQTT_CLIENT_ID: smarthome-core
-            CORS_ALLOW_ORIGIN: ^https?://(localhost|127\:0\:0\:1|core\:smarthome\:lan)(:[0-9]+)?$
         depends_on:
             - db
     nginx:
