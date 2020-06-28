@@ -4,6 +4,7 @@ services:
     db:
         container_name: db
         image: mysql
+        restart: always
         command: [
             '--character-set-server=utf8mb4',
             '--collation-server=utf8mb4_unicode_ci',
@@ -22,6 +23,7 @@ services:
             MYSQL_PASSWORD: symfony
     php:
         container_name: php
+        restart: always
         build:
             context: .
             dockerfile: php/Dockerfile-php
@@ -42,6 +44,8 @@ services:
         depends_on:
             - db
     nginx:
+        container_name: nginx
+        restart: always
         build:
             context: .
             dockerfile: nginx/Dockerfile-nginx
