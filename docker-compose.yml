@@ -43,6 +43,16 @@ services:
             MQTT_CLIENT_ID: smarthome-core
         depends_on:
             - db
+    node:
+        container_name: node
+        restart: always
+        build:
+            context: .
+            dockerfile: node/Dockerfile-node
+        networks:
+            - smart-home
+        depends_on:
+            - php
     nginx:
         container_name: nginx
         restart: always
@@ -59,7 +69,7 @@ services:
         environment:
             VUE_APP_BASE_URL: http://core.smarthome.lan:8001/api
         depends_on:
-            - php
+            - node
 
 
 networks:
