@@ -1,0 +1,46 @@
+FROM node:latest
+
+WORKDIR /var/www/mqtt-pipe
+
+COPY smart-home-mqtt-pipe/package*.json /var/www/smart-home-mqtt-pipe/
+
+RUN npm install
+
+COPY smart-home-mqtt-pipe/ /var/www/smart-home-mqtt-pipe
+
+RUN npm run build
+
+EXPOSE 8080
+CMD ["node", "dist/Index.js"]
+
+
+
+
+
+
+
+
+WORKDIR /var/www/smart-home-frontend
+
+COPY smart-home-frontend/package*.json /var/www/smart-home-frontend/
+
+RUN npm install
+
+COPY smart-home-frontend/ /var/www/smart-home-frontend
+
+RUN npm run build
+
+FROM nginx:latest as production-stage
+
+COPY --from=build-stage /var/www/smart-home-frontend /var/www/smart-home-frontend
+COPY nginx/nginx.conf /etc/nginx/
+COPY nginx/default.conf /etc/nginx/conf.d/
+COPY nginx/vue.conf /etc/nginx/conf.d/
+
+RUN echo "upstream php-upstream { server php:9001; }" > /etc/nginx/conf.d/upstream.conf
+
+CMD ["nginx"]
+
+EXPOSE 80
+EXPOSE 8080
+EXPOSE 443rm-reqs; php-fpm
