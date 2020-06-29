@@ -51,7 +51,7 @@ services:
             DATABASE_URL: mysql://symfony:symfony@db:3306/smart_home?serverVersion=5.7
             JWT_PASSPHRASE: localhost
             JWT_TTL: 9993600
-            MQTT_SERVER_HOST: mqtt
+            MQTT_SERVER_HOST: core.smarthome.lan
             MQTT_SERVER_PORT: 1883
             MQTT_CLIENT_ID: leviathan
         depends_on:
