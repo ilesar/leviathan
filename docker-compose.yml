@@ -11,7 +11,7 @@ services:
         networks:
             - smart-home
         volumes:
-            - .mqtt/mosquitto.conf:/mosquitto/config/mosquitto.conf
+            - ./mqtt/mosquitto.conf:/mosquitto/config/mosquitto.conf
     db:
         container_name: db
         image: mysql
