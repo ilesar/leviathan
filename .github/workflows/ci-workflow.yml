@@ -30,6 +30,12 @@ jobs:
           repository: ilesar/smart-home-frontend
           token: ${{ secrets.ACCESS_TOKEN }}
           path: ./smart-home-frontend
+      - name: Checkout SmartHomeMqttPipe project
+          uses: actions/checkout@v2.2.0
+          with:
+            repository: ilesar/smart-home-mqtt-pipe
+            token: ${{ secrets.ACCESS_TOKEN }}
+            path: ./smart-home-mqtt-pipe
       - name: Current directory
         run: pwd
       - name: Build the stack
