@@ -1,6 +1,17 @@
 version: '3.7'
 
 services:
+    mqtt:
+        container_name: mqtt
+        restart: always
+        image: eclipse-mosquitto
+        ports:
+            - 1883:1883
+            - 9002:9001
+        networks:
+            - smart-home
+        volumes:
+            - .mqtt/mosquitto.conf:/mosquitto/config/mosquitto.conf
     db:
         container_name: db
         image: mysql
@@ -21,6 +32,8 @@ services:
             MYSQL_ROOT_PASSWORD: root
             MYSQL_USER: symfony
             MYSQL_PASSWORD: symfony
+        depends_on:
+            - mqtt
     php:
         container_name: php
         restart: always
