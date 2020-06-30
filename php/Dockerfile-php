@@ -19,4 +19,3 @@ COPY smart-home/ /var/www/smart-home
 WORKDIR /var/www/smart-home/
 CMD composer install --ignore-platform-reqs; php-fpm
 CMD composer db:init
-CMD composer jwt:create
