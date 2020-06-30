@@ -20,4 +20,4 @@ WORKDIR /var/www/smart-home/
 CMD composer install --ignore-platform-reqs; php-fpm
 CMD composer db:init
 CMD composer jwt:create
-CMD chmod 644 ./config/jwt/*
+CMD chmod 644 /var/www/smart-home/config/jwt/*
