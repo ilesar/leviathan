@@ -11,4 +11,4 @@ COPY smart-home-mqtt-pipe/ /var/www/smart-home-mqtt-pipe
 RUN npm run build
 
 EXPOSE 8080
-CMD ["node", "dist/Index.js"]
+CMD ["node", "dist/index.js"]
