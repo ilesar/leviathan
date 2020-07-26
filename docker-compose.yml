@@ -13,7 +13,7 @@ services:
         volumes:
             - ./mqtt/mosquitto.conf:/mosquitto/config/mosquitto.conf
     db:
-        container_name: mariadb
+        container_name: db
         image: mariadb
         restart: on-failure
         command: [
