@@ -13,9 +13,9 @@ services:
         volumes:
             - ./mqtt/mosquitto.conf:/mosquitto/config/mosquitto.conf
     db:
-        container_name: db
-        image: mysql
-        restart: always
+        container_name: mariadb
+        image: mariadb
+        restart: on-failure
         command: [
             '--character-set-server=utf8mb4',
             '--collation-server=utf8mb4_unicode_ci',
